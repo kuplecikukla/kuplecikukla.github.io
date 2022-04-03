@@ -1,0 +1,96 @@
+    <!DOCTYPE html>  
+  <html lang="en">
+  <head>
+    <style>
+    * {
+        top: 0;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        width: 8px;
+        height: 8px;
+    }
+    .row, #row1 {
+        position: absolute;
+        width: 1456px;
+    }
+    .picco {
+	
+        position: absolute;
+	/*	width: 6px;
+        height: 6px;*/
+		
+    }
+    .picco:hover {
+	/*width: 10px;
+        height: 10px;*/
+        z-index: 1;
+        border: solid 1px black;
+        outline: solid 1px white;
+    }
+    .coor{
+        color: black;
+        position: absolute;
+        background-color: white;
+        font-family: monospace;
+        z-index: 2;
+        border-radius: 4px;
+        height: 20px;
+        font-size: 16px;
+        width: 100px;
+        pointer-events: none;
+        text-align: center;
+        border: solid 1px black;
+        outline: solid 1px white;
+    }
+    </style>
+
+</head>
+    <body>
+	<img  src="https://i.hizliresim.com/7ri41jq.png" style=" width: 600px; height: 600px;z-index:-1;">
+</img>
+    <div id="piccod" class="coor">[0,0]</div> 
+	<div id="row1"></div> 
+	    <script>
+	
+	var x1 = 1061;
+	var y1 = 509;
+	var pix = 12;
+	
+		document.getElementsByClassName("picco").onmouseover = function() 
+{
+    this.style.width = (pix-4)+'px';
+    this.style.height = (pix-4)+'px';	
+}
+	
+	var row1 = document.getElementById("row1");
+	var i , j ;
+        function hw(j, i) {
+        const piccod = document.getElementById("piccod");
+        piccod.innerText = "[" + (j + x1) + ", " + (i + y1) + "]";
+        piccod.style.left = j * pix + 16 + "px";
+        piccod.style.top = i *pix - 6 + "px";
+      }
+	  
+	  
+	  
+for (let i = 0; i < 50; i++) {
+   
+for (let j = 0; j < 50; j++) {	
+
+var dr5 = 'hw('+j+', '+i+')';
+  
+var link = 'https://new.reddit.com/r/place/?cx='+(j+x1)+'&cy='+(i+y1)+'&px=20';
+	var  newlink = document.createElement('a');
+newlink.style.left = (j * pix) + 'px' ;
+newlink.style.top = (i * pix) + "px" ;
+newlink.classList.add("picco");
+newlink.setAttribute('onMouseOver', dr5);
+newlink.setAttribute('href', link);
+newlink.setAttribute('target', 'blank');
+row1.appendChild(newlink);
+//row1.innerHTML += newlink; 
+}row1.innerHTML += "<br>"; 	}
+    </script>
+	   </body>
+    </html>
